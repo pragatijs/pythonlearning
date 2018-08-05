@@ -13,18 +13,25 @@ urls = (
 class add:
     def GET(self):
         param = web.input(a=10,b=9,opt='+')
+        parama=int(param.a)
+        paramb=int(param.b)
+        print param.opt
         if param.opt=='+':
-            return a+b
+            return parama+paramb
         elif param.opt=='-':
-            return a-b
-        elif opt=='x':
-            return a*b
-        elif opt=='/':
-            if b!=0:
-                return a/b
-            else:
-                return "Second value cannot be zero!"
+            return parama-paramb
+        elif param.opt=='x':
+            return parama*paramb
+        elif param.opt=='/':
+            try:
+                
+                return parama / paramb
 
+            except Exception as e:
+                #return "Second value cannot be zero!"
+                return e
+        else:
+            return "didnt understand the operand"+param.opt
 
         """a = 1
         b = 2
